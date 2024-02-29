@@ -134,12 +134,20 @@ class LinkedList {
         return true;
     }
  
-	/// WRITE REMOVE METHOD HERE ///
-	//                            //
-	//                            //
-	//                            //
-	//                            //
-	////////////////////////////////
+	remove(index) {
+        if (index === 0) return this.shift();
+        if (index === this.length - 1) return this.pop();
+        if (index < 0 || index >= this.length) return undefined;
+
+        let before = this.get(index - 1);
+        let temp = before.next;
+
+        before.next = temp.next;
+        temp.next = null;
+        this.length--;
+
+        return temp;
+    }
 
 }
 
