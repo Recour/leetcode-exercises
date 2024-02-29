@@ -121,12 +121,23 @@ class LinkedList {
         return false;
     }
  
-	/// WRITE INSERT METHOD HERE ///
-	//                            //
-	//                            //
-	//                            //
-	//                            //
-	////////////////////////////////
+	insert(index, value) {
+        if (index === 0) this.unshift(value);
+        if (index === this.length) this.push(value);
+        if (index < 0 || index > this.length) return false;
+
+        let node = new Node(value);
+        let temp = this.get(index - 1);
+
+        if (temp) {
+            node.next = temp.next;
+            temp.next = node;
+        }
+
+        this.length++;
+
+        return true;
+    }
 
 }
 
