@@ -59,12 +59,25 @@ class LinkedList {
       this.length++;
   }
   
-  // WRITE HAS LOOP METHOD HERE // 
-  //                            //
-  //                            //
-  //                            //
-  //                            //
-  ////////////////////////////////
+  hasLoop() {
+    if (!this.head) {
+      return false;
+    }
+
+    let slow = this.head;
+    let fast = this.head;
+
+    while(fast !== null && fast.next !== null) {
+      slow = slow.next;
+      fast = fast.next.next;
+
+      if (slow === fast) {
+        return true;
+      }
+    }
+
+    return false;
+  }
 
 }
 
