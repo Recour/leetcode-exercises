@@ -53,12 +53,26 @@ class LinkedList {
       }
   }
   
-  // WRITE THE FINDMIDDLENODE METHOD HERE // 
-  //                                      //
-  //                                      //
-  //                                      //
-  //                                      //
-  //////////////////////////////////////////
+  findMiddleNode() {
+    if (!this.head) {
+      return null;
+    }
+
+    let slow = this.head;
+    let fast = this.head;
+
+    while (slow.next && fast.next) {
+      slow = slow.next;
+
+      if (fast.next.next) {
+        fast = fast.next.next;
+      } else {
+        fast = fast.next;
+      }
+    }
+
+    return slow;
+  }
 
 }
 
