@@ -46,27 +46,44 @@ class LinkedList {
       this.length = 0;
   }
 
-push(value) {
-  const newNode = new Node(value);
-  if (!this.head) {
-    this.head = newNode;
-  } else {
-    let current = this.head;
-    while (current.next !== null) {
-      current = current.next;
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = newNode;
     }
-    current.next = newNode;
+    this.length++;
   }
-  this.length++;
-}
 
-// WRITE THE REVERSEBETWEEN METHOD HERE // 
-//                                      //
-//                                      //
-//                                      //
-//                                      //
-//////////////////////////////////////////
+  reverseBetween(m, n) {
+    if (this.head === null) return;
 
+    const dummy = new Node(0);
+    dummy.next = this.head;
+
+    let prev = dummy;
+    for (let i = 0; i < m; i++) {
+        prev = prev.next;
+    }
+
+    let current = prev.next;
+
+    for (let i = 0; i < n - m; i++) {
+        const temp = current.next;
+
+        current.next = temp.next;
+
+        temp.next = prev.next;
+        prev.next = temp;
+    }
+
+    this.head = dummy.next;
+  }
 }
 
 
@@ -76,12 +93,13 @@ myLinkedList.push(2);
 myLinkedList.push(3);
 myLinkedList.push(4);
 myLinkedList.push(5);
+myLinkedList.push(6);
 
 console.log("Original list:");
 myLinkedList.printList();
 console.log("----------------");
 
-const m = 2;
+const m = 1;
 const n = 4;
 myLinkedList.reverseBetween(m, n);
 
