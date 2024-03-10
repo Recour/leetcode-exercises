@@ -40,16 +40,22 @@ class Stack {
   
 }
 
+const reverseString = (string) => {
+    const stack = new Stack();
 
+    for (let i = 0; i < string.length; i++) {
+        stack.push(string[i]);
+    }
 
-// WRITE THE REVERSESTRING FUNCTION HERE //
-//                                       //
-//                                       //
-//                                       //
-//                                       //
-///////////////////////////////////////////
+    let result = '';
+    const stackSize = stack.size();
 
+    for (let i = 0; i < stackSize; i++) {
+        result += stack.pop();
+    }
 
+    return result;
+}
 
 const input1 = "Hello, World!";
 const expected1 = "!dlroW ,olleH";
