@@ -1,73 +1,84 @@
 class Node {
-    constructor(value){
-        this.value = value;
-        this.next = null;
-        this.prev = null;
-    }
+  constructor(value){
+      this.value = value;
+      this.next = null;
+      this.prev = null;
+  }
 }
- 
+
 class DoublyLinkedList {
-    constructor(value) {
-        const newNode = new Node(value);
-        this.head = newNode;
-        this.tail = newNode;
-        this.length = 1;
+  constructor(value) {
+      const newNode = new Node(value);
+      this.head = newNode;
+      this.tail = newNode;
+      this.length = 1;
+  }
+
+  printList() {
+      let temp = this.head;
+      while (temp !== null) {
+          console.log(temp.value);
+          temp = temp.next;
+      }
+  }
+
+  getHead() {
+      if (this.head === null) {
+          console.log("Head: null");
+      } else {
+          console.log("Head: " + this.head.value);
+      }
+  }
+
+  getTail() {
+      if (this.tail === null) {
+          console.log("Tail: null");
+      } else {
+          console.log("Tail: " + this.tail.value);
+      }
+  }
+
+  getLength() {
+      console.log("Length: " + this.length);
+  }
+
+  makeEmpty() {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+  }
+
+  push(value){
+      const newNode = new Node(value);
+      if (this.length === 0) {
+          this.head = newNode;
+          this.tail = newNode;
+      } else {
+          this.tail.next = newNode;
+          newNode.prev = this.tail;
+          this.tail = newNode;
+      }
+      this.length++;
+      return this;
+  }
+
+  isPalindrome() {
+    if (!this.head) return true;
+
+    let head = this.head;
+    let tail = this.tail;
+
+    while (head) {
+      if (head.value !== tail.value) {
+        return false;
+      }
+
+      head = head.next;
+      tail = tail.prev;
     }
 
-    printList() {
-        let temp = this.head;
-        while (temp !== null) {
-            console.log(temp.value);
-            temp = temp.next;
-        }
-    }
-
-    getHead() {
-        if (this.head === null) {
-            console.log("Head: null");
-        } else {
-            console.log("Head: " + this.head.value);
-        }
-    }
-
-    getTail() {
-        if (this.tail === null) {
-            console.log("Tail: null");
-        } else {
-            console.log("Tail: " + this.tail.value);
-        }
-    }
-
-    getLength() {
-        console.log("Length: " + this.length);
-    }
-
-    makeEmpty() {
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
-    }
- 
-    push(value){
-        const newNode = new Node(value);
-        if (this.length === 0) {
-            this.head = newNode;
-            this.tail = newNode;
-        } else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
-        }
-        this.length++;
-        return this;
-    }
-
-    // WRITE THE ISPALINDROME METHOD HERE //
-    //                                    //
-    //                                    //
-    //                                    //
-    //                                    //
-    ////////////////////////////////////////
+    return true;
+  }
 
 }
 
@@ -94,21 +105,21 @@ myDoublyLinkedList2.printList();
 console.log("Is List 2 a palindrome? " + myDoublyLinkedList2.isPalindrome());
 
 /*
-    EXPECTED OUTPUT:
-    ----------------
-    List 1:
-    1
-    2
-    3
-    2
-    1
-    Is List 1 a palindrome? true
+  EXPECTED OUTPUT:
+  ----------------
+  List 1:
+  1
+  2
+  3
+  2
+  1
+  Is List 1 a palindrome? true
 
-    List 2:
-    1
-    2
-    3
-    4
-    5
-    Is List 2 a palindrome? false
+  List 2:
+  1
+  2
+  3
+  4
+  5
+  Is List 2 a palindrome? false
 */
