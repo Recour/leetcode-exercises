@@ -62,12 +62,23 @@ class DoublyLinkedList {
       return this;
   }
 
-  // WRITE THE REVERSE METHOD HERE //
-  //                               //
-  //                               //
-  //                               //
-  //                               //
-  ///////////////////////////////////
+  reverse() {
+    if (!this.head) return null;
+
+    let current = this.head;
+
+    for (let i = 0; i < this.length; i++) {
+      let temp = current.next;
+      current.next = current.prev;
+      current.prev = temp;
+
+      current = temp;
+    }
+
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
+  }
 
 }
 
