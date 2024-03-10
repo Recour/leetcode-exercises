@@ -33,11 +33,10 @@ class Stack {
       this.stackList.push(value);
   }
 
-  // WRITE THE POP METHOD HERE // 
-  //                           //
-  //                           //
-  //                           //
-  //                           //
-  ///////////////////////////////
+  pop() {
+    if (!this.stackList.length) return null;
+
+    return this.stackList.pop();
+  }
   
 }
