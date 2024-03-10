@@ -29,11 +29,8 @@ class Stack {
         return this.stackList.length;
     }
 
-    // WRITE THE PUSH METHOD HERE // 
-    //                            //
-    //                            //
-    //                            //
-    //                            //
-    ////////////////////////////////
+    push(value) {
+        this.stackList.push(value);
+    }
     
 }
