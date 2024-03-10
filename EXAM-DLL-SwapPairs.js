@@ -53,12 +53,43 @@ class DoublyLinkedList {
       this.length++;
   }
 
-  // WRITE THE SWAPPAIRS METHOD HERE //
-  //                                 //
-  //                                 //
-  //                                 //
-  //                                 //
-  /////////////////////////////////////
+  swapPairs() {
+    if (!this.head) return null;
+
+    if (this.length === 1) {
+      return this;
+    }
+
+    let current = this.head;
+    let next = current.next;
+
+    this.head = next;
+
+    while (current && current.next) {
+      next = current.next;
+
+      let temp = current.prev;
+
+      current.next = next.next;
+
+      if (current.prev) {
+        current.prev.next = next;
+      }
+
+      current.prev = next;
+
+      if (next.next) {
+        next.next.prev = current;
+      }
+
+      next.next = current;
+      next.prev = temp;
+
+      current = current.next;
+    }
+
+    return this;
+  }
 
 }
 
