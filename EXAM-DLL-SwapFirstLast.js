@@ -1,73 +1,86 @@
 class Node {
-    constructor(value){
-        this.value = value;
-        this.next = null;
-        this.prev = null;
-    }
+  constructor(value){
+      this.value = value;
+      this.next = null;
+      this.prev = null;
+  }
 }
- 
+
 class DoublyLinkedList {
-    constructor(value) {
-        const newNode = new Node(value);
-        this.head = newNode;
-        this.tail = newNode;
-        this.length = 1;
-    }
+  constructor(value) {
+      const newNode = new Node(value);
+      this.head = newNode;
+      this.tail = newNode;
+      this.length = 1;
+  }
 
-    printList() {
-        let temp = this.head;
-        while (temp !== null) {
-            console.log(temp.value);
-            temp = temp.next;
-        }
-    }
+  printList() {
+      let temp = this.head;
+      while (temp !== null) {
+          console.log(temp.value);
+          temp = temp.next;
+      }
+  }
 
-    getHead() {
-        if (this.head === null) {
-            console.log("Head: null");
-        } else {
-            console.log("Head: " + this.head.value);
-        }
-    }
+  getHead() {
+      if (this.head === null) {
+          console.log("Head: null");
+      } else {
+          console.log("Head: " + this.head.value);
+      }
+  }
 
-    getTail() {
-        if (this.tail === null) {
-            console.log("Tail: null");
-        } else {
-            console.log("Tail: " + this.tail.value);
-        }
-    }
+  getTail() {
+      if (this.tail === null) {
+          console.log("Tail: null");
+      } else {
+          console.log("Tail: " + this.tail.value);
+      }
+  }
 
-    getLength() {
-        console.log("Length: " + this.length);
-    }
+  getLength() {
+      console.log("Length: " + this.length);
+  }
 
-    makeEmpty() {
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
-    }
- 
-    push(value){
-        const newNode = new Node(value);
-        if (this.length === 0) {
-            this.head = newNode;
-            this.tail = newNode;
-        } else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
-        }
-        this.length++;
-        return this;
-    }
+  makeEmpty() {
+      this.head = null;
+      this.tail = null;
+      this.length = 0;
+  }
 
-    // WRITE THE SWAPFIRST METHOD HERE //
-    //                                 //
-    //                                 //
-    //                                 //
-    //                                 //
-    /////////////////////////////////////
+  push(value){
+      const newNode = new Node(value);
+      if (this.length === 0) {
+          this.head = newNode;
+          this.tail = newNode;
+      } else {
+          this.tail.next = newNode;
+          newNode.prev = this.tail;
+          this.tail = newNode;
+      }
+      this.length++;
+      return this;
+  }
+
+  swapFirstLast() {
+    if (this.length === 0 || this.length === 1) return null;
+
+    const head = this.head;
+    const tail = this.tail;
+
+    let temp = tail;
+
+    tail.prev.next = head;
+
+    tail.next = head.next;
+    tail.prev = null;
+
+    head.next = null;
+    head.prev = temp.prev;
+
+    this.head = tail;
+    this.tail = head;
+  }
 
 }
 
@@ -103,32 +116,32 @@ myDoublyLinkedList2.printList();
 
 
 /*
-    EXPECTED OUTPUT:
-    ----------------
-    Original list:
-    1
-    2
-    3
-    4
-    5
-    List after swapping first and last elements:
-    5
-    2
-    3
-    4
-    1
-    Original list 2:
-    1
-    2
-    3
-    4
-    5
-    6
-    List 2 after swapping first and last elements:
-    6
-    2
-    3
-    4
-    5
-    1
+  EXPECTED OUTPUT:
+  ----------------
+  Original list:
+  1
+  2
+  3
+  4
+  5
+  List after swapping first and last elements:
+  5
+  2
+  3
+  4
+  1
+  Original list 2:
+  1
+  2
+  3
+  4
+  5
+  6
+  List 2 after swapping first and last elements:
+  6
+  2
+  3
+  4
+  5
+  1
 */
