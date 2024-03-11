@@ -42,12 +42,23 @@ class Stack {
 
 
 
-// WRITE THE SORTSTACK FUNCTION HERE //
-//                                   //
-//                                   //
-//                                   //
-//                                   //
-///////////////////////////////////////
+const sortStack = (stack) => {
+  const additionalStack = new Stack();
+
+  while (!stack.isEmpty()) {
+    const temp = stack.pop();
+
+    while (!additionalStack.isEmpty() && additionalStack.peek() > temp) {
+      stack.push(additionalStack.pop());
+    }
+
+    additionalStack.push(temp);
+  }
+
+  while (!additionalStack.isEmpty()) {
+    stack.push(additionalStack.pop());
+  }
+}
 
 
 
