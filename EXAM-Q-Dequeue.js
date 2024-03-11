@@ -52,12 +52,9 @@ class MyQueue {
       }
   }
 
-  // WRITE THE DEQUEUE METHOD HERE //
-  //                               //
-  //                               //
-  //                               //
-  //                               //
-  ///////////////////////////////////
+  dequeue() {
+    return this.stack1.pop();
+  }
 
 }
 
