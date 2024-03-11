@@ -42,12 +42,24 @@ class Stack {
 
 
 
-// WRITE THE ISBALANCEDPARENTHESES FUNCTION HERE //
-//                                               //
-//                                               //
-//                                               //
-//                                               //
-///////////////////////////////////////////////////
+const isBalancedParentheses = (parentheses) => {
+  if (parentheses.length === 0) return true;
+
+  const stack = new Stack();
+
+  for (let i = 0; i < parentheses.length; i++) {
+    const parenthesesChar = parentheses[i];
+
+    if (parenthesesChar === "(") {
+      stack.push(parenthesesChar);
+    } else {
+      if (stack.isEmpty() || stack.peek() !== "(") return false;
+      stack.pop();
+    }
+  }
+
+  return stack.isEmpty();
+}
 
 
 
