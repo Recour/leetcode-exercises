@@ -1,22 +1,19 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function finds all the pairs of numbers that |
-//   |   sum up to a given target.                         |
-//   | - One number is taken from arr1 and the other from  |
-//   |   arr2.                                             |
-//   |                                                     |
-//   | Return type: Array of Arrays                        |
-//   | - Returns an array of pairs that sum to the target. |
-//   | - Each pair is an array [num1, num2].               |
-//   | - Returns an empty array if no such pairs exist.    |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use a Set to keep track of numbers from   |
-//   |   arr1.                                             |
-//   | - Then iterate through arr2 to find complementing   |
-//   |   numbers.                                          |
-//   +=====================================================+
+const findPairs = (arr1, arr2, target) => {
+  const set = new Set(arr1);
+  const pairs = [];
+
+  for (let i = 0; i < arr2.length; i++) {
+    const num = arr2[i];
+    
+    const diff = target - num;
+
+    if (set.has(diff)) {
+      pairs.push([diff, num]);
+    }
+  }
+
+  return pairs;
+}
 
 
 
