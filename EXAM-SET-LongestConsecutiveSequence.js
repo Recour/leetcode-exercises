@@ -1,20 +1,25 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function finds the length of the longest     |
-//   |   consecutive sequence of integers in the given     |
-//   |   array.                                            |
-//   |                                                     |
-//   | Return type: number                                 |
-//   | - Returns the length of the longest consecutive     |
-//   |   sequence.                                         |
-//   | - Returns 0 if the array is empty.                  |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use a Set to track unique numbers.        |
-//   | - The function iterates through each unique number  |
-//   |   and finds streaks of consecutive numbers.         |
-//   +=====================================================+
+const longestConsecutiveSequence = (arr) => {
+  const set = new Set(arr);
+  const orderedArr = [...set].sort();
+
+  const sequences = [0];
+  let currentIndex = 0;
+  let current = orderedArr[currentIndex];
+
+  for (let i = 0; i < orderedArr.length; i++) {
+    const next = orderedArr[i + 1];
+
+    if (next !== current + 1) {
+      sequences.push(i - currentIndex + 1);
+
+      currentIndex = i + 1;
+    }
+
+    current = next;
+  }
+
+  return Math.max(...sequences);
+}
 
 
 
