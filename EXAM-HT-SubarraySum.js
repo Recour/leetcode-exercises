@@ -1,22 +1,23 @@
-//   +=====================================================+
-//   |               WRITE YOUR CODE HERE                  |
-//   | Description:                                        |
-//   | - This function finds a subarray that sums up to    |
-//   |   the target value.                                 |
-//   |                                                     |
-//   | Return type: array                                  |
-//   | - Returns an array with the start and end indices   |
-//   |   of the subarray.                                  |
-//   | - Returns an empty array if no such subarray exists.|
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use either a Map or an object to track    |
-//   |   the sums and their indices.                       |
-//   | - Example with Map:                                 |
-//   |   sumIndex.set(currentSum, i);                      |
-//   | - Example with object:                              |
-//   |   sumIndex[currentSum] = i;                         |
-//   +=====================================================+
+const subarraySum = (arr, target) => {
+  const sumIndex = {
+    0: -1
+  };
+  let currentSum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+    currentSum+= num;
+    
+    const diff = currentSum - target;
+    if (sumIndex[diff]) {
+      return [sumIndex[diff] + 1, i];
+    } 
+
+    sumIndex[currentSum] = i;
+  }
+
+  return [];
+}
 
 
 
