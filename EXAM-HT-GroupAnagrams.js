@@ -1,21 +1,19 @@
-//   +=====================================================+
-//   |                 WRITE YOUR CODE HERE                |
-//   | Description:                                        |
-//   | - This function groups anagrams from an array       |
-//   |   of strings.                                       |
-//   |                                                     |
-//   | Return type: array                                  |
-//   | - Returns an array of arrays where each array       |
-//   |   contains anagrams.                                |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use either a Map or an object to manage   |
-//   |   the groups of anagrams.                           |
-//   | - Example with Map:                                 |
-//   |   anagramGroups.set(canonical, group);              |
-//   | - Example with object:                              |
-//   |   anagramGroups[canonical] = group;                 |
-//   +=====================================================+
+const groupAnagrams = (strs) => {
+  const anagramGroups = {};
+
+  for (let i = 0; i < strs.length; i++) {
+    const str = strs[i];
+    const sortedStr = str.split('').sort().join('');
+
+    if (anagramGroups[sortedStr]) {
+      anagramGroups[sortedStr].push(str);
+    } else {
+      anagramGroups[sortedStr] = [str];
+    }
+  }
+
+  return Object.values(anagramGroups);
+}
 
 
 
