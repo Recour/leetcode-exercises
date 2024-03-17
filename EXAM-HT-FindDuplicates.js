@@ -1,19 +1,17 @@
-//   +======================================================+
-//   |                WRITE YOUR CODE HERE                  |
-//   | Description:                                         |
-//   | - This function finds duplicate numbers in an array. |
-//   |                                                      |
-//   | Return type: array                                   |
-//   | - Returns an array containing the duplicate numbers. |
-//   |                                                      |
-//   | Tips:                                                |
-//   | - You can use either a Map or an object for          |
-//   |   counting occurrences of each number.               |
-//   | - Example with Map:                                  |
-//   |   numCounts.set(num, (numCounts.get(num) || 0) + 1); |
-//   | - Example with object:                               |
-//   |   numCounts[num] = (numCounts[num] || 0) + 1;        |
-//   +======================================================+
+const findDuplicates = (arr) => {
+  const dict = {};
+  const duplicates = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (dict[arr[i]]) {
+      duplicates.push(arr[i]);
+    } else {
+      dict[arr[i]] = true;
+    }
+  }
+
+  return duplicates;
+}
 
 
 
