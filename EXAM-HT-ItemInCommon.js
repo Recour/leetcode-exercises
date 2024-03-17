@@ -1,19 +1,18 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function checks if two arrays have at least  |
-//   |   one item in common.                               |
-//   |                                                     |
-//   | Return type: bool                                   |
-//   | - Returns true if an item is found in both arrays.  |
-//   | - Otherwise, returns false.                         |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use either a Map or an object to store    |
-//   |   elements from the first array for quick lookup.   |
-//   | - Example with Map: myMap.set(i, true);             |
-//   | - Example with object: obj[arr1[i]] = true;         |
-//   +=====================================================+
+const itemInCommon = (arr1, arr2) => {
+  const dict = {};
+
+  for (let i = 0; i < arr1.length; i++) {
+    dict[arr1[i]] = true;
+  }
+
+  for (let i = 0; i < arr2.length; i++) {
+    if (dict[arr2[i]]) {
+      return true;
+    }
+  }
+
+  return false;
+}
 
 
 
