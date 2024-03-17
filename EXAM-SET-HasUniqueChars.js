@@ -1,19 +1,13 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function checks if all the characters in a   |
-//   |   given string are unique.                          |
-//   |                                                     |
-//   | Return type: Boolean                                |
-//   | - Returns true if all characters are unique.        |
-//   | - Returns false otherwise.                          |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use a Set to keep track of seen           |
-//   |   characters.                                       |
-//   | - If a character is already in the Set, you can     |
-//   |   return false immediately.                         |
-//   +=====================================================+
+const hasUniqueChars = (str) => {
+  const uniqueChars = new Set();
+
+  for (let i = 0; i < str.length; i++) {
+    if (uniqueChars.has(str[i])) return false;
+    uniqueChars.add(str[i]);
+  }
+
+  return true;
+}
 
 
 
