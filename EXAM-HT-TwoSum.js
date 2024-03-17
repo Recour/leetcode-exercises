@@ -1,22 +1,24 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function finds two numbers in the array      |
-//   |   that add up to the target value.                  |
-//   |                                                     |
-//   | Return type: array                                  |
-//   | - Returns an array containing the indices of the    |
-//   |   two numbers that sum to the target.               |
-//   | - Returns an empty array if no such numbers exist.  |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use either a Map or an object to track    |
-//   |   the numbers and their indices.                    |
-//   | - Example with Map:                                 |
-//   |   numMap.set(num, i);                               |
-//   | - Example with object:                              |
-//   |   numObject[num] = i;                               |
-//   +=====================================================+
+const twoSum = (nums, target) => {
+  const numObject = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    if (numObject[num]) {
+      numObject[num].push(i);
+    } else {
+      numObject[num] = [i];
+    }
+  }
+
+  for (let i = 0; i < nums.length; i++) {
+    let remainder = target - nums[i];
+    if (numObject[remainder] && numObject[remainder].length && numObject[remainder][0] !== i) {
+      return [i, numObject[remainder][0]].sort();
+    }
+  }
+
+  return [];
+}
 
 
 
