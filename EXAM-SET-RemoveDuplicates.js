@@ -1,16 +1,6 @@
-//   +=====================================================+
-//   |                WRITE YOUR CODE HERE                 |
-//   | Description:                                        |
-//   | - This function removes duplicate items from a list.|
-//   |                                                     |
-//   | Return type: Array                                  |
-//   | - Returns a new array with all unique elements.     |
-//   |                                                     |
-//   | Tips:                                               |
-//   | - You can use a Set to remove duplicates.           |
-//   | - The Array.from() method can convert a Set back to |
-//   |   an array.                                         |
-//   +=====================================================+
+const removeDuplicates = (arr) => {
+  return [...new Set(arr)];
+};
 
 
 
